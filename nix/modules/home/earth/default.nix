@@ -1,0 +1,37 @@
+_: {
+  imports = [
+    ./hyprland
+    ./hyprlock
+    ./stylix
+    ./waybar
+    ./bitwarden.nix
+    ./brave.nix
+    ./btop.nix
+    ./fuzzel.nix
+    ./gimp.nix
+    ./git.nix
+    ./helix.nix
+    ./hypridle.nix
+    ./hyprpaper.nix
+    ./hyprpicker.nix
+    ./hyprpolkitagent.nix
+    ./hyprshot.nix
+    ./jujutsu.nix
+    ./kitty.nix
+    ./lutris.nix
+    ./mako.nix
+    ./migration-script.nix
+    ./mpv.nix
+    ./nh.nix
+    ./qbittorrent.nix
+    ./satty.nix
+    ./sops.nix
+    ./ssh.nix
+    ./starship.nix
+    ./tor-browser.nix
+    ./unar.nix
+    ./vesktop.nix
+    ./yazi.nix
+    ./zsh.nix
+  ];
+}
