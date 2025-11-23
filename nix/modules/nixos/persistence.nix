@@ -18,11 +18,10 @@ in {
           ]
           ++ lib.optional config.networking.dhcpcd.enable "/var/lib/dhcpcd"
           ++ lib.optional config.security.sudo.enable "/var/db/sudo";
-        files =
-          [
-            "/etc/adjtime"
-            "/etc/machine-id" # nixos expects this
-          ];
+        files = [
+          "/etc/adjtime"
+          "/etc/machine-id" # nixos expects this
+        ];
       };
       ${cfg.laDir} = {
         inherit (cfg) enable;

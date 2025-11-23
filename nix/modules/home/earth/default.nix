@@ -20,9 +20,9 @@ _: {
     ./kitty.nix
     ./lutris.nix
     ./mako.nix
-    ./migration-script.nix
     ./mpv.nix
     ./nh.nix
+    ./nixos-anywhere.nix
     ./qbittorrent.nix
     ./satty.nix
     ./sops.nix

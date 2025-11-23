@@ -40,5 +40,7 @@
       desktop = 0.8;
       popups = 0.8;
     };
+    overlays.enable = false;
+    targets.vesktop.enable = false;
   };
 }
