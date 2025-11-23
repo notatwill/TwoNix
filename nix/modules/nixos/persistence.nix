@@ -22,8 +22,7 @@ in {
           [
             "/etc/adjtime"
             "/etc/machine-id" # nixos expects this
-          ]
-          ++ lib.optional config.services.logrotate.enable "/var/lib/logrotate.status";
+          ];
       };
       ${cfg.laDir} = {
         inherit (cfg) enable;

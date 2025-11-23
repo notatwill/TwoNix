@@ -2,7 +2,7 @@
   cfg = config.vars.persistence;
 in {
   environment.persistence = {
-    ${cfg.laDir}.users.willg.directories = [
+    ${cfg.laDir}.users.will.directories = [
       "Documents"
       "Downloads"
       "Games"
@@ -13,7 +13,7 @@ in {
       ".local/share/Steam"
       ".steam"
     ];
-    ${cfg.dir}.users.willg = {
+    ${cfg.dir}.users.will = {
       files = [
         ".bash_history"
         ".zsh_history"
