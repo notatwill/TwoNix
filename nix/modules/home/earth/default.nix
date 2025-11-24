@@ -9,7 +9,6 @@ _: {
     ./btop.nix
     ./fuzzel.nix
     ./gimp.nix
-    ./git.nix
     ./helix.nix
     ./hypridle.nix
     ./hyprpaper.nix
