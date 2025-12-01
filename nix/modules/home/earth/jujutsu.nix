@@ -1,4 +1,4 @@
-{pkgs,...}: {
+{pkgs, ...}: {
   programs.jujutsu.enable = true;
-  home.packages = [ pkgs.git ];
+  home.packages = [pkgs.git];
 }
