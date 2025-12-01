@@ -7,6 +7,7 @@
   plaDir = config.vars.persistence.laDir;
 in {
   imports = [inputs.disko.nixosModules.disko];
+  vars.persistence.enable = true;
 
   disko.devices = {
     nodev = {

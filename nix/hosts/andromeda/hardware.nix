@@ -9,9 +9,15 @@
     {config.facter.reportPath = ./facter.json;}
   ];
 
+  services.xserver.videoDrivers = [
+    "amdgpu"
+  ];
   hardware.nvidia = {
     prime = {
-      sync.enable = true;
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
       amdgpuBusId = "PCI:15:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
