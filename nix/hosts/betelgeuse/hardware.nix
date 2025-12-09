@@ -18,7 +18,7 @@
         enable = true;
         enableOffloadCmd = true;
       };
-      amdgpuBusId = "PCI:1:0:0";
+      intelBusId = "PCI:1:0:0";
       nvidiaBusId = "PCI:0:2:0";
     };
   };

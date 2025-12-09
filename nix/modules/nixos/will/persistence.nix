@@ -19,7 +19,6 @@ in {
         ".zsh_history"
       ];
       directories = [
-        ".config/Bitwarden"
         ".config/BraveSoftware/Brave-Browser"
         ".config/GIMP"
         ".config/qBittorrent"

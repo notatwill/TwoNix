@@ -4,7 +4,6 @@ _: {
     ./hyprlock
     ./stylix
     ./waybar
-    ./bitwarden.nix
     ./brave.nix
     ./btop.nix
     ./fuzzel.nix
