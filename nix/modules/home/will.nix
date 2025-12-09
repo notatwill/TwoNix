@@ -16,24 +16,24 @@
     git = {
       settings.user = {
         email = "git.panic703@simplelogin.com";
-        name = "notatwill";
+        name = "hybrideology";
       };
       includes = [
         {
           condition = "gitdir:~/git/github";
-          contents.user.email = "30223844+notatwill@users.noreply.github.com";
+          contents.user.email = "30223844+hybrideology@users.noreply.github.com";
         }
       ];
     };
     jujutsu.settings = {
       user = {
         email = "git.panic703@simplelogin.com";
-        name = "notatwill";
+        name = "hybrideology";
       };
       "--scope" = [
         {
           "--when".repositories = ["~/git/github"];
-          user.email = "30223844+notatwill@users.noreply.github.com";
+          user.email = "30223844+hybrideology@users.noreply.github.com";
         }
       ];
     };
