@@ -3,9 +3,9 @@ _: {
     enable = true;
     settings = {
       general = {
-        general.after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key a second time after wake
+        after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key a second time after wake
         before_sleep_cmd = "loginctl lock-session";
-        general.lock_cmd = "pidof hyprlock || hyprlock --grace 2";
+        lock_cmd = "pidof hyprlock || hyprlock --grace 2";
       };
       listener = [
         {
