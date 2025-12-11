@@ -1,7 +1,6 @@
 _: {
   imports = [
     ./hyprland
-    ./hyprlock
     ./stylix
     ./waybar
     ./brave.nix
@@ -9,11 +8,6 @@ _: {
     ./fuzzel.nix
     ./gimp.nix
     ./helix.nix
-    ./hypridle.nix
-    ./hyprpaper.nix
-    ./hyprpicker.nix
-    ./hyprpolkitagent.nix
-    ./hyprshot.nix
     ./jujutsu.nix
     ./kitty.nix
     ./lutris.nix
@@ -22,6 +16,7 @@ _: {
     ./nh.nix
     ./nixos-anywhere.nix
     ./qbittorrent.nix
+    ./rbw.nix
     ./satty.nix
     ./sops.nix
     ./ssh.nix

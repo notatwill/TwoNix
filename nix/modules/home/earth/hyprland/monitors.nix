@@ -5,7 +5,7 @@
 }: {
   wayland.windowManager.hyprland.settings.monitor =
     [
-      ",preferred,auto,1" # recommended for plugging in random monitors
+      ",preferred,auto,1" # for plugging in random monitors
     ]
     ++ lib.optionals (osConfig.networking.hostName == "andromeda") [
       "DP-4, 2560x1440@180, 0x0, 1, bitdepth, 10"

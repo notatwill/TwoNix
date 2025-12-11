@@ -1,4 +1,3 @@
-# Lock screen for wayland
 {
   config,
   lib,
@@ -141,7 +140,4 @@ in {
       ];
     };
   };
-
-  # Hypridle integration
-  services.hypridle.settings.general.lock_cmd = "pidof hyprlock || hyprlock --grace 2";
 }
