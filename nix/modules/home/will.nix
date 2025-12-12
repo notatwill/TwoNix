@@ -1,12 +1,14 @@
 {
   inputs,
   config,
+  pkgs,
   ...
 }: {
   imports = [inputs.sops-nix.homeManagerModules.sops];
   home = {
     username = "will";
     homeDirectory = "/home/will";
+    packages = [pkgs.pinentry-tty]; # needed for rbw
   };
   sops = {
     defaultSopsFile = inputs.secrets.will;
