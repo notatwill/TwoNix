@@ -1,30 +1,30 @@
 _: {
   imports = [
-    ./hyprland
     ./stylix
-    ./waybar
-    ./brave.nix
-    ./btop.nix
-    ./fuzzel.nix
-    ./gimp.nix
-    ./helix.nix
-    ./jujutsu.nix
-    ./kitty.nix
-    ./lutris.nix
-    ./mako.nix
-    ./mpv.nix
-    ./nh.nix
-    ./nixos-anywhere.nix
-    ./qbittorrent.nix
-    ./rbw.nix
-    ./satty.nix
-    ./sops.nix
-    ./ssh.nix
-    ./starship.nix
-    ./tor-browser.nix
-    ./unar.nix
-    ./vesktop.nix
-    ./yazi.nix
-    ./zsh.nix
+    ../hyprland
+    ../waybar
+    ../brave.nix
+    ../btop.nix
+    ../fuzzel.nix
+    ../gimp.nix
+    ../helix.nix
+    ../jujutsu.nix
+    ../kitty.nix
+    ../lutris.nix
+    ../mako.nix
+    ../mpv.nix
+    ../nh.nix
+    ../nixos-anywhere.nix
+    ../qbittorrent.nix
+    ../rbw.nix
+    ../satty.nix
+    ../sops.nix
+    ../ssh.nix
+    ../starship.nix
+    ../tor-browser.nix
+    ../unar.nix
+    ../vesktop.nix
+    ../yazi.nix
+    ../zsh.nix
   ];
 }
