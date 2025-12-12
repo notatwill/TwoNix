@@ -1,6 +1,5 @@
 system: "base16"
 name: "Enigma"
-author: "willg"
 variant: "dark"
 palette:
     base00: "#0a0b11"
