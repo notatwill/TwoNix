@@ -1,5 +1,3 @@
 _: {
-  programs.rbw = {
-    enable = true;
-  };
+  programs.rbw.enable = true;
 }

@@ -11,8 +11,13 @@
   sops = {
     defaultSopsFile = inputs.secrets.will;
     age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+    secrets = {
+      "ssh_key".path = "${config.home.homeDirectory}/.ssh/${config.home.username}";
+      "rbw_config".path = "${config.xdg.configHome}/rbw/config.json";
+    };
   };
   programs = {
+    ssh.matchBlocks."*".identityFile = config.sops.secrets."ssh_key".path;
     git = {
       settings.user = {
         email = "git.panic703@simplelogin.com";
