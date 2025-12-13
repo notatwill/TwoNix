@@ -1,13 +1,14 @@
-{flake, ...}: {
+_: {
   system.autoUpgrade = {
     enable = true;
-    flake = flake.outPath;
+    flake = "github:hybrideology/TwoNix";
     flags = ["-L"];
-    dates = "02:00";
-    randomizedDelaySec = "1800";
+    dates = "04:00";
+    randomizedDelaySec = "45min";
+    persistent = true;
     allowReboot = true;
     rebootWindow = {
-      lower = "01:00";
+      lower = "02:00";
       upper = "05:00";
     };
   };
