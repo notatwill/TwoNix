@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = [
-    pkgs.gimp3
+    pkgs.gimp
   ];
 }

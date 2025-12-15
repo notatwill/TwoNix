@@ -16,7 +16,6 @@ _: {
     ../nh.nix
     ../nixos-anywhere.nix
     ../qbittorrent.nix
-    ../rbw.nix
     ../satty.nix
     ../sops.nix
     ../ssh.nix
