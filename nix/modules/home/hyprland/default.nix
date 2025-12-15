@@ -20,4 +20,5 @@
     enable = true;
     systemd.enable = false; # disable systemd integration to use UWSM
   };
+  vars.persistence.dirs = [".local/share/hyprland"];
 }

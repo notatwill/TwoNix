@@ -1,44 +1,38 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.vars.persistence;
+  username = "will";
+  hasHM =
+    lib.hasAttr "home-manager" config
+    && lib.hasAttr username config.home-manager.users;
+  hmCfg = config.home-manager.users.will.vars.persistence;
 in {
-  environment.persistence = {
-    ${cfg.laDir}.users.will.directories = [
-      "Documents"
-      "Downloads"
-      "Games"
-      "git"
-      "Music"
-      "Pictures"
-      "Videos"
-      ".local/share/Steam"
-      ".steam"
-    ];
-    ${cfg.dir}.users.will = {
-      files = [
-        ".bash_history"
-        ".zsh_history"
-      ];
-      directories = [
-        ".config/BraveSoftware/Brave-Browser"
-        ".config/GIMP"
-        ".config/qBittorrent"
-        ".config/vesktop"
-        ".local/share/qBittorrent"
-        ".config/uwsm"
-        ".local/share/hyprland"
-        ".local/share/lutris"
-        ".local/share/systemd"
-        ".local/state/yazi"
-        ".pki/nssdb"
-        {
-          directory = ".config/sops/age";
-          mode = "0700";
-        }
-        {
-          directory = ".ssh";
-          mode = "0700";
-        }
-      ];
-    };
-  };
+  environment.persistence = lib.mkMerge [
+    {
+      ${cfg.laDir}.users.${username} = {
+        directories = lib.optionals config.programs.steam.enable [
+          ".local/share/Steam"
+          ".steam"
+        ];
+      };
+      ${cfg.dir}.users.${username} = {
+        files = lib.optional config.programs.bash.enable ".bash_history";
+        directories = lib.optional config.programs.uwsm.enable ".config/uwsm";
+      };
+    }
+    (lib.mkIf hasHM
+      {
+        ${cfg.laDir}.users.${username} = {
+          files = hmCfg.laFiles;
+          directories = hmCfg.laDirs;
+        };
+        ${cfg.dir}.users.${username} = {
+          inherit (hmCfg) files;
+          directories = hmCfg.dirs;
+        };
+      })
+  ];
 }

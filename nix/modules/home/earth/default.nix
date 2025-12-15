@@ -2,6 +2,7 @@ _: {
   imports = [
     ./stylix
     ../hyprland
+    ../required
     ../waybar
     ../brave.nix
     ../btop.nix

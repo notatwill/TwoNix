@@ -14,4 +14,10 @@ _: {
       };
     };
   };
+  vars.persistence.dirs = [
+    {
+      directory = ".ssh";
+      mode = "0700";
+    }
+  ];
 }

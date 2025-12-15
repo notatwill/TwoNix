@@ -8,4 +8,5 @@ _: {
     };
   };
   programs.kitty.settings.shell = "zsh";
+  vars.persistence.files = [".zsh_history"];
 }

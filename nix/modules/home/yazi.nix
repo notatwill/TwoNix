@@ -10,4 +10,5 @@ _: {
       rm -f -- "$tmp"
     }
   '';
+  vars.persistence.dirs = [".local/state/yazi"];
 }
