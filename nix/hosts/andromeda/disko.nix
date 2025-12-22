@@ -88,7 +88,6 @@ in {
           keys = {
             type = "zfs_fs";
             mountpoint = keyDir;
-            mountOptions = ["ro"];
           };
         };
       };
@@ -99,8 +98,8 @@ in {
           atime = "off";
           compression = "zstd";
           encryption = "on";
-          keyformat = "raw";
-          keylocation = "file://${keyDir}/tank";
+          keyformat = "passphrase";
+          keylocation = "prompt";
           mountpoint = "none";
         };
         datasets = {
@@ -113,11 +112,7 @@ in {
     };
   };
   fileSystems = {
-    ${keyDir}.neededForBoot = true;
     ${pDir}.neededForBoot = true;
-    ${plaDir} = {
-      neededForBoot = true;
-      depends = [keyDir];
-    };
+    ${plaDir}.neededForBoot = true;
   };
 }
