@@ -4,6 +4,7 @@ _: {
     ./auto-upgrade.nix
     ./fail2ban.nix
     ./gc-store.nix
+    ./git.nix
     ./jellyfin.nix
     ./nix.nix
     ./nixpkgs.nix
