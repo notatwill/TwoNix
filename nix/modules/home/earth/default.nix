@@ -9,6 +9,7 @@ _: {
     ../fuzzel.nix
     ../gimp.nix
     ../helix.nix
+    ../homeDirs.nix
     ../jujutsu.nix
     ../kitty.nix
     ../lutris.nix

@@ -47,6 +47,10 @@ in {
     zpool = {
       fast = {
         type = "zpool";
+        options = {
+          ashift = "12";
+          autotrim = "on";
+        };
         rootFsOptions = {
           atime = "off";
           compression = "lz4";
