@@ -1,22 +1,17 @@
 {
   inputs,
   config,
-  pkgs,
   ...
 }: {
   imports = [inputs.sops-nix.homeManagerModules.sops];
   home = {
     username = "will";
     homeDirectory = "/home/will";
-    packages = [pkgs.pinentry-tty]; # needed for rbw
   };
   sops = {
     defaultSopsFile = inputs.secrets.will;
     age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
-    secrets = {
-      "ssh_key".path = "${config.home.homeDirectory}/.ssh/${config.home.username}";
-      "rbw_config".path = "${config.xdg.configHome}/rbw/config.json";
-    };
+    secrets."ssh_key".path = "${config.home.homeDirectory}/.ssh/${config.home.username}";
   };
   programs = {
     ssh.matchBlocks."*".identityFile = config.sops.secrets."ssh_key".path;

@@ -5,6 +5,7 @@
 }: let
   pDir = config.vars.persistence.dir;
   plaDir = config.vars.persistence.laDir;
+  keyDir = "/keys";
 in {
   imports = [inputs.disko.nixosModules.disko];
   vars.persistence.enable = true;
@@ -13,17 +14,17 @@ in {
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = ["defaults" "size=50%" "mode=755" "noatime"];
+        mountOptions = ["size=50%" "mode=755" "noatime"];
       };
     };
     disk = {
-      "ssd" = {
+      ssd = {
         type = "disk";
         device = "/dev/disk/by-id/wwn-0x5f8db4c141803e8c";
         content = {
           type = "gpt";
           partitions = {
-            "ESP" = {
+            ESP = {
               size = "1G";
               type = "EF00";
               content = {
@@ -33,27 +34,27 @@ in {
                 mountOptions = ["umask=0077"];
               };
             };
-            "zfs" = {
+            zfs = {
               size = "100%";
               content = {
                 type = "zfs";
-                pool = "zroot";
+                pool = "fast";
               };
             };
           };
         };
       };
-      "hdd" = {
+      hdd = {
         type = "disk";
         device = "/dev/disk/by-id/wwn-0x50014ee20e131e19";
         content = {
           type = "gpt";
           partitions = {
-            "zfs" = {
+            zfs = {
               size = "100%";
               content = {
                 type = "zfs";
-                pool = "zla";
+                pool = "tank";
               };
             };
           };
@@ -61,39 +62,44 @@ in {
       };
     };
     zpool = {
-      zroot = {
+      fast = {
         type = "zpool";
+        options = {
+          ashift = "12";
+          autotrim = "on";
+        };
         rootFsOptions = {
           atime = "off";
-          compression = "lz4";
+          compression = "zstd";
           encryption = "on";
           keyformat = "passphrase";
           keylocation = "prompt";
           mountpoint = "none";
         };
         datasets = {
-          "nix" = {
+          nix = {
             type = "zfs_fs";
             mountpoint = "/nix";
           };
-          "persist" = {
+          persist = {
             type = "zfs_fs";
             mountpoint = pDir;
           };
         };
       };
-      zla = {
+      tank = {
         type = "zpool";
+        options.ashift = "12";
         rootFsOptions = {
           atime = "off";
-          compression = "lz4";
+          compression = "zstd";
           encryption = "on";
-          keyformat = "passphrase";
-          keylocation = "prompt";
+          keyformat = "raw";
+          keylocation = "file://${keyDir}/tank";
           mountpoint = "none";
         };
         datasets = {
-          "persist-la" = {
+          persist-la = {
             type = "zfs_fs";
             mountpoint = plaDir;
           };

@@ -13,17 +13,17 @@ in {
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = ["defaults" "size=50%" "mode=755" "noatime"];
+        mountOptions = ["size=50%" "mode=755" "noatime"];
       };
     };
     disk = {
-      "ssd" = {
+      ssd = {
         type = "disk";
         device = "/dev/disk/by-id/nvme-eui.002538b121c63cc2";
         content = {
           type = "gpt";
           partitions = {
-            "ESP" = {
+            ESP = {
               size = "1G";
               type = "EF00";
               content = {
@@ -33,11 +33,11 @@ in {
                 mountOptions = ["umask=0077"];
               };
             };
-            "zfs" = {
+            zfs = {
               size = "100%";
               content = {
                 type = "zfs";
-                pool = "zroot";
+                pool = "fast";
               };
             };
           };
@@ -45,7 +45,7 @@ in {
       };
     };
     zpool = {
-      zroot = {
+      fast = {
         type = "zpool";
         rootFsOptions = {
           atime = "off";
@@ -56,15 +56,15 @@ in {
           mountpoint = "none";
         };
         datasets = {
-          "nix" = {
+          nix = {
             type = "zfs_fs";
             mountpoint = "/nix";
           };
-          "persist" = {
+          persist = {
             type = "zfs_fs";
             mountpoint = pdir;
           };
-          "persist-la" = {
+          persist-la = {
             type = "zfs_fs";
             mountpoint = pladir;
           };
