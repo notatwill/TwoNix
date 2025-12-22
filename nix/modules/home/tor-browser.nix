@@ -7,5 +7,4 @@
   wayland.windowManager.hyprland.settings.bind = [
     "$mainMod, b, exec, tor-browser"
   ];
-  vars.persistence.dirs = [".pki"];
 }

@@ -2,8 +2,5 @@
   home.packages = [
     pkgs.brave
   ];
-  vars.persistence.files = [
-    ".pki"
-    ".config/BraveSoftware/Brave-Browser"
-  ];
+  vars.persistence.files = [".config/BraveSoftware/Brave-Browser"];
 }

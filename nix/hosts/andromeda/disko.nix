@@ -85,6 +85,11 @@ in {
             type = "zfs_fs";
             mountpoint = pDir;
           };
+          keys = {
+            type = "zfs_fs";
+            mountpoint = keyDir;
+            mountOptions = ["ro"];
+          };
         };
       };
       tank = {
@@ -108,7 +113,11 @@ in {
     };
   };
   fileSystems = {
+    ${keyDir}.neededForBoot = true;
     ${pDir}.neededForBoot = true;
-    ${plaDir}.neededForBoot = true;
+    ${plaDir} = {
+      neededForBoot = true;
+      depends = [keyDir];
+    };
   };
 }
