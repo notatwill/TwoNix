@@ -1,6 +1,6 @@
 {flake, ...}: {
   imports = [
-    flake.nixosModules.workstation
+    flake.nixosModules.server
     ./disko.nix
     ./hardware.nix
     ./users.nix
