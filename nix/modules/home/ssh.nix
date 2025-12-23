@@ -7,9 +7,6 @@ _: {
       "*" = {
         host = "*";
         hashKnownHosts = true;
-      };
-      "github.com" = {
-        host = "github.com";
         addKeysToAgent = "1h";
       };
     };

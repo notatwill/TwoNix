@@ -9,5 +9,4 @@ in {
     logDir = "${dirs.apps}/jellyfin/log";
     configDir = "${dirs.apps}/jellyfin/config";
   };
-  # NOTE: NEEDS TO BE LINKED TO PERSIST DIR
 }
