@@ -9,6 +9,7 @@
     ./hypridle.nix
     ./hyprpaper.nix
     ./hyprpicker.nix
+    ./input.nix
     ./misc.nix
     ./monitors.nix
     ./windowrules.nix
