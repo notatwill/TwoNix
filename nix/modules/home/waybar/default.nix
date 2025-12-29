@@ -65,7 +65,7 @@ _: {
           ];
           format-ethernet = "모 {ifname}";
           format-wifi = "{icon} {signalStrength}% {ifname}";
-          tooltip-format = "{ipaddr}";
+          tooltip-format = "{essid}: {ipaddr}";
           format-disconnected = "󰤮";
         };
         backlight = {
