@@ -9,4 +9,5 @@
   networking.hostName = "ceres";
   networking.hostId = "e0fdcfa7"; # random, required by zfs
   system.stateVersion = "25.11";
+  services.tailscale.enable = true;
 }
