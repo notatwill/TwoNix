@@ -8,9 +8,7 @@ _: {
     ../nixos-anywhere.nix
     ../sops.nix
     ../ssh.nix
-    ../starship.nix
     ../unar.nix
     ../yazi.nix
-    ../zsh.nix
   ];
 }
