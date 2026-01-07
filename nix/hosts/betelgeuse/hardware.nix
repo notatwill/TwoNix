@@ -1,25 +1,21 @@
-{
-  inputs,
-  flake,
-  ...
-}: {
+{flake, ...}: {
   imports = [
-    inputs.nixos-facter-modules.nixosModules.facter
     flake.nixosModules.nvidia
-    {config.facter.reportPath = ./facter.json;}
   ];
-
   services.xserver.videoDrivers = [
     "modesetting"
   ];
-  hardware.nvidia = {
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
+  hardware = {
+    facter.reportPath = ./facter.json;
+    nvidia = {
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        intelBusId = "PCI:1:0:0";
+        nvidiaBusId = "PCI:0:2:0";
       };
-      intelBusId = "PCI:1:0:0";
-      nvidiaBusId = "PCI:0:2:0";
     };
   };
 }

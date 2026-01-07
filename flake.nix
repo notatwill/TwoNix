@@ -12,7 +12,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.url = "github:nix-community/impermanence";
-    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     secrets.url = "git+ssh://git@github.com/hybrideology/sops-secrets.git";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";

@@ -1,6 +1,3 @@
-{inputs, ...}: {
-  imports = [
-    inputs.nixos-facter-modules.nixosModules.facter
-    {config.facter.reportPath = ./facter.json;}
-  ];
+_: {
+  hardware.facter.reportPath = ./facter.json;
 }
