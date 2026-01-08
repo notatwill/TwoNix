@@ -17,13 +17,13 @@ in {
     jellyseerr = {
       enable = true;
       openFirewall = true;
-      group = group;
       configDir = "${dirs.apps}/jellyseerr";
     };
     lidarr = {
       enable = true;
       openFirewall = true;
       group = group;
+      user = user;
       dataDir = "${dirs.apps}/lidarr";
     };
     qbittorrent = {
