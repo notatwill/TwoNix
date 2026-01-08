@@ -4,7 +4,10 @@
   user = "media";
 in {
   users.groups.${group}.gid = 101;
-  users.users.${user}. uid = 101;
+  users.users.${user} = {
+    uid = 101;
+    group = group;
+  };
   services = {
     jellyfin = {
       enable = true;
