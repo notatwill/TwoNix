@@ -31,6 +31,64 @@ in {
       user = user;
       dataDir = "${dirs.apps}/lidarr";
     };
+    radarr = {
+      enable = true;
+      openFirewall = true;
+      group = group;
+      user = user;
+      dataDir = "${dirs.apps}/radarr";
+    };
+    sonarr = {
+      enable = true;
+      openFirewall = true;
+      group = group;
+      user = user;
+      dataDir = "${dirs.apps}/sonarr";
+    };
+    readarr = {
+      enable = true;
+      openFirewall = true;
+      group = group;
+      user = user;
+      dataDir = "${dirs.apps}/readarr";
+    };
+    bazarr = {
+      enable = true;
+      openFirewall = true;
+      group = group;
+      user = user;
+      dataDir = "${dirs.apps}/bazarr";
+    };
+    prowlarr = {
+      enable = true;
+      openFirewall = true;
+      dataDir = "${dirs.apps}/prowlarr";
+    };
+    # recyclarr = {
+    #   enable = true;
+    #   group = group;
+    #   user = user;
+    #   configuration = {
+    #     radarr = [
+    #       {
+    #         api_key = {
+    #           _secret = "/run/credentials/recyclarr.service/radarr-api_key";
+    #         };
+    #         base_url = "http://localhost:7878";
+    #         instance_name = "main";
+    #       }
+    #     ];
+    #     sonarr = [
+    #       {
+    #         api_key = {
+    #           _secret = "/run/credentials/recyclarr.service/sonarr-api_key";
+    #         };
+    #         base_url = "http://localhost:8989";
+    #         instance_name = "main";
+    #       }
+    #     ];
+    #   };
+    # };
     qbittorrent = {
       enable = true;
       openFirewall = true;
