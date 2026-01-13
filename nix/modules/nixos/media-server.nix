@@ -21,7 +21,7 @@ in {
     jellyseerr = {
       enable = true;
       openFirewall = true;
-      configDir = "${dirs.apps}/jellyseerr/config";
+      configDir = "${dirs.apps}/jellyseerr";
     };
     lidarr = {
       enable = true;
@@ -106,6 +106,6 @@ in {
     "d ${dirs.media}/music 0750 ${group} ${user} -"
     "d ${dirs.media}/photosvideos 0750 ${group} ${user} -"
     "d ${dirs.media}/shows 0750 ${group} ${user} -"
-    "d ${config.services.jellyseerr.configDir} 0750 root root -"
+    "d ${config.services.jellyseerr.configDir} 0750 jellyseerr jellyseerr -"
   ];
 }
