@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  imports = [inputs.sops-nix.homeManagerModules.sops];
+  imports = [./sops.nix];
   home = {
     username = "will";
     homeDirectory = "/home/will";
