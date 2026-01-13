@@ -3,10 +3,19 @@
   group = "media";
   user = "media";
 in {
-  users.groups.${group}.gid = 101;
-  users.users.${user} = {
-    uid = 101;
-    group = group;
+  users.groups = {
+    ${group}.gid = 101;
+    jellyseerr.gid = 102;
+  };
+  users.users = {
+    ${user} = {
+      uid = 101;
+      group = group;
+    };
+    jellyseerr = {
+      uid = 102;
+      group = "jellyseerr";
+    };
   };
   services = {
     jellyfin = {
