@@ -13,6 +13,7 @@ in {
       enable = true;
       group = group;
       user = user;
+      openFirewall = true;
       dataDir = "${dirs.media}/jellyfin";
       cacheDir = "${dirs.apps}/jellyfin/cache";
       logDir = "${dirs.apps}/jellyfin/log";
@@ -89,9 +90,6 @@ in {
       group = group;
       user = user;
       profileDir = dirs.apps;
-    };
-    nginx.virtualHosts = {
-      "media.ceres".locations."/".proxyPass = "http://127.0.0.1:8096/";
     };
   };
   networking.firewall.allowedTCPPorts = [80];
