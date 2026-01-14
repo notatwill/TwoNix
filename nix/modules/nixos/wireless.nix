@@ -1,5 +1,8 @@
 {config, ...}: {
-  sops.secrets."wpa_secrets" = {};
+  sops.secrets."wpa_secrets" = {
+    owner = config.users.users.wpa_supplicant.name;
+    path = "/run/wpa_secrets";
+  };
   networking.wireless = {
     enable = true;
     secretsFile = config.sops.secrets."wpa_secrets".path;

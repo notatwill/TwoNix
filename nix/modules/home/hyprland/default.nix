@@ -12,9 +12,7 @@
     ./input.nix
     ./misc.nix
     ./monitors.nix
-    ./windowrules.nix
     ./workspaces.nix
-    ./xwayland.nix
   ];
 
   wayland.windowManager.hyprland = {
