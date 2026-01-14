@@ -19,7 +19,6 @@ _: {
     ../nixos-anywhere.nix
     ../qbittorrent.nix
     ../satty.nix
-    ../sops.nix
     ../ssh.nix
     ../starship.nix
     ../tor-browser.nix
