@@ -94,10 +94,23 @@ in {
   };
   networking.firewall.allowedTCPPorts = [80];
   systemd.tmpfiles.rules = [
-    "d ${dirs.media}/books 0750 ${group} ${user} -"
-    "d ${dirs.media}/movies 0750 ${group} ${user} -"
-    "d ${dirs.media}/music 0750 ${group} ${user} -"
-    "d ${dirs.media}/photosvideos 0750 ${group} ${user} -"
-    "d ${dirs.media}/shows 0750 ${group} ${user} -"
+    "d ${dirs.media}/live 0755 ${group} ${user} -"
+    "d ${dirs.media}/live/books 0750 ${group} ${user} -"
+    "d ${dirs.media}/live/movies 0750 ${group} ${user} -"
+    "d ${dirs.media}/live/music 0750 ${group} ${user} -"
+    "d ${dirs.media}/live/photosvideos 0750 ${group} ${user} -"
+    "d ${dirs.media}/live/shows 0750 ${group} ${user} -"
+    "d ${dirs.media}/torrent 0755 ${group} ${user} -"
+    "d ${dirs.media}/torrent/books 0750 ${group} ${user} -"
+    "d ${dirs.media}/torrent/movies 0750 ${group} ${user} -"
+    "d ${dirs.media}/torrent/music 0750 ${group} ${user} -"
+    "d ${dirs.media}/torrent/shows 0750 ${group} ${user} -"
+    "d ${dirs.media}/usenet 0755 ${group} ${user} -"
+    "d ${dirs.media}/usenet/incomplete 0750 ${group} ${user} -"
+    "d ${dirs.media}/usenet/complete 0750 ${group} ${user} -"
+    "d ${dirs.media}/usenet/complete/books 0750 ${group} ${user} -"
+    "d ${dirs.media}/usenet/complete/movies 0750 ${group} ${user} -"
+    "d ${dirs.media}/usenet/complete/music 0750 ${group} ${user} -"
+    "d ${dirs.media}/usenet/complete/shows 0750 ${group} ${user} -"
   ];
 }
