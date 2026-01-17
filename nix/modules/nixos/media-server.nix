@@ -84,7 +84,11 @@ in {
     #     ];
     #   };
     # };
-    i2p.enable = true;
+    i2pd = {
+      enable = true;
+      enableIPv6 = true;
+      yggdrasil.enable = true;
+    };
     qbittorrent = {
       enable = true;
       openFirewall = true;
