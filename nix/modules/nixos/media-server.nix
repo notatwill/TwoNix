@@ -84,6 +84,7 @@ in {
     #     ];
     #   };
     # };
+    i2p.enable = true;
     qbittorrent = {
       enable = true;
       openFirewall = true;
