@@ -12,6 +12,7 @@ _: {
     ../homeDirs.nix
     ../jujutsu.nix
     ../kitty.nix
+    ../librewolf.nix
     ../lutris.nix
     ../mako.nix
     ../mpv.nix
