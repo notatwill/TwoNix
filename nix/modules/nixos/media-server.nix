@@ -90,13 +90,13 @@ in {
       yggdrasil.enable = true;
       proto.sam.enable = true;
     };
-    qbittorrent = {
-      enable = true;
-      openFirewall = true;
-      group = group;
-      user = user;
-      profileDir = dirs.apps;
-    };
+    # qbittorrent = {
+    #   enable = true;
+    #   openFirewall = true;
+    #   group = group;
+    #   user = user;
+    #   profileDir = dirs.apps;
+    # };
   };
   networking.firewall.allowedTCPPorts = [80];
   systemd.tmpfiles.rules = [
