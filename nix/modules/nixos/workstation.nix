@@ -13,6 +13,7 @@ _: {
     ./persistence.nix
     ./pipewire.nix
     ./printing.nix
+    ./snowflake.nix
     ./steam.nix
     ./systemd-boot.nix
     ./wireless.nix
