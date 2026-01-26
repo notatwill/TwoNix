@@ -7,6 +7,7 @@ _: {
     ../btop.nix
     ../fuzzel.nix
     ../gimp.nix
+    ../godot.nix
     ../helix.nix
     ../homeDirs.nix
     ../jujutsu.nix
