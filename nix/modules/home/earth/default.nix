@@ -4,7 +4,6 @@ _: {
     ../hyprland
     ../required
     ../waybar
-    ../brave.nix
     ../btop.nix
     ../fuzzel.nix
     ../gimp.nix
