@@ -1,4 +1,8 @@
-_: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.kitty = {
     enable = true;
     settings = {
@@ -7,6 +11,6 @@ _: {
     };
   };
   wayland.windowManager.hyprland.settings.bind = [
-    "$mainMod, Q, exec, uwsm app -- kitty"
+    "$mainMod, Q, exec, uwsm app -- ${lib.getExe config.programs.kitty.package}"
   ];
 }

@@ -4,7 +4,4 @@
   home.packages = [
     pkgs.tor-browser
   ];
-  wayland.windowManager.hyprland.settings.bind = [
-    "$mainMod, b, exec, tor-browser"
-  ];
 }
