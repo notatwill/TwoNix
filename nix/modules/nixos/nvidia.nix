@@ -7,6 +7,7 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     powerManagement.enable = true;
+    powerManagement.finegrained = true;
     nvidiaSettings = false;
     open = true;
   };
