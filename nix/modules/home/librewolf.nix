@@ -14,6 +14,7 @@ _: {
           installation_mode = "force_installed";
         };
       };
+      SearchEngines.Default = "DuckDuckGo Lite";
     };
     profiles.default = {
       isDefault = true;
