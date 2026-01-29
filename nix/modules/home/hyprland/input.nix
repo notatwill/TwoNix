@@ -4,5 +4,6 @@ _: {
       natural_scroll = true;
       disable_while_typing = true;
     };
+    tablet.output = "current";
   };
 }

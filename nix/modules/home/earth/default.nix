@@ -12,6 +12,7 @@ _: {
     ../homeDirs.nix
     ../jujutsu.nix
     ../kitty.nix
+    ../libresprite.nix
     ../librewolf.nix
     ../lutris.nix
     ../mako.nix
@@ -19,6 +20,7 @@ _: {
     ../nh.nix
     ../nixos-anywhere.nix
     ../qbittorrent.nix
+    ../rnote.nix
     ../satty.nix
     ../ssh.nix
     ../starship.nix
