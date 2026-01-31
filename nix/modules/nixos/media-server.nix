@@ -1,18 +1,22 @@
 {config, ...}: let
   dirs = config.vars.dataDirs;
-  group = "media";
-  user = "media";
+  torrentGroup = "torrent";
+  usenetGroup = "usenet";
+  serveGroup = "serve";
 in {
-  users.groups.${group}.gid = 101;
-  users.users.${user} = {
-    uid = 101;
-    group = group;
-  };
+  users.groups.${torrentGroup}.gid = 101;
+  users.groups.${usenetGroup}.gid = 102;
+  users.groups.${serveGroup}.gid = 103;
+  users.users.${config.services.jellyfin.user}.extraGroups = [serveGroup];
+  users.users.${config.services.lidarr.user}.extraGroups = [torrentGroup usenetGroup serveGroup];
+  users.users.${config.services.radarr.user}.extraGroups = [torrentGroup usenetGroup serveGroup];
+  users.users.${config.services.sonarr.user}.extraGroups = [torrentGroup usenetGroup serveGroup];
+  users.users.${config.services.readarr.user}.extraGroups = [torrentGroup usenetGroup serveGroup];
+  users.users.${config.services.bazarr.user}.extraGroups = [serveGroup];
+  users.users.${config.services.qbittorrent.user}.extraGroups = [torrentGroup];
   services = {
     jellyfin = {
       enable = true;
-      group = group;
-      user = user;
       openFirewall = true;
       dataDir = "${dirs.media}/jellyfin";
       cacheDir = "${dirs.apps}/jellyfin/cache";
@@ -22,36 +26,26 @@ in {
     lidarr = {
       enable = true;
       openFirewall = true;
-      group = group;
-      user = user;
       dataDir = "${dirs.apps}/lidarr";
     };
     radarr = {
       enable = true;
       openFirewall = true;
-      group = group;
-      user = user;
       dataDir = "${dirs.apps}/radarr";
     };
     sonarr = {
       enable = true;
       openFirewall = true;
-      group = group;
-      user = user;
       dataDir = "${dirs.apps}/sonarr";
     };
     readarr = {
       enable = true;
       openFirewall = true;
-      group = group;
-      user = user;
       dataDir = "${dirs.apps}/readarr";
     };
     bazarr = {
       enable = true;
       openFirewall = true;
-      group = group;
-      user = user;
       dataDir = "${dirs.apps}/bazarr";
     };
     prowlarr = {
@@ -90,33 +84,31 @@ in {
       yggdrasil.enable = true;
       proto.sam.enable = true;
     };
-    # qbittorrent = {
-    #   enable = true;
-    #   openFirewall = true;
-    #   group = group;
-    #   user = user;
-    #   profileDir = dirs.apps;
-    # };
+    qbittorrent = {
+      enable = true;
+      openFirewall = true;
+      profileDir = dirs.apps;
+    };
   };
   networking.firewall.allowedTCPPorts = [80];
   systemd.tmpfiles.rules = [
-    "d ${dirs.media}/live 0770 ${group} ${user} -"
-    "d ${dirs.media}/live/books 0770 ${group} ${user} -"
-    "d ${dirs.media}/live/movies 0770 ${group} ${user} -"
-    "d ${dirs.media}/live/music 0770 ${group} ${user} -"
-    "d ${dirs.media}/live/photosvideos 0770 ${group} ${user} -"
-    "d ${dirs.media}/live/shows 0770 ${group} ${user} -"
-    "d ${dirs.media}/torrent 0770 ${group} ${user} -"
-    "d ${dirs.media}/torrent/books 0770 ${group} ${user} -"
-    "d ${dirs.media}/torrent/movies 0770 ${group} ${user} -"
-    "d ${dirs.media}/torrent/music 0770 ${group} ${user} -"
-    "d ${dirs.media}/torrent/shows 0770 ${group} ${user} -"
-    "d ${dirs.media}/usenet 0770 ${group} ${user} -"
-    "d ${dirs.media}/usenet/incomplete 0770 ${group} ${user} -"
-    "d ${dirs.media}/usenet/complete 0770 ${group} ${user} -"
-    "d ${dirs.media}/usenet/complete/books 0770 ${group} ${user} -"
-    "d ${dirs.media}/usenet/complete/movies 0770 ${group} ${user} -"
-    "d ${dirs.media}/usenet/complete/music 0770 ${group} ${user} -"
-    "d ${dirs.media}/usenet/complete/shows 0770 ${group} ${user} -"
+    "d ${dirs.media}/live 0770 ${serveGroup} root -"
+    "d ${dirs.media}/live/books 0770 ${serveGroup} root -"
+    "d ${dirs.media}/live/movies 0770 ${serveGroup} root -"
+    "d ${dirs.media}/live/music 0770 ${serveGroup} root -"
+    "d ${dirs.media}/live/photosvideos 0770 ${serveGroup} root -"
+    "d ${dirs.media}/live/shows 0770 ${serveGroup} root -"
+    "d ${dirs.media}/torrent 0770 ${torrentGroup} root -"
+    "d ${dirs.media}/torrent/books 0770 ${torrentGroup} root -"
+    "d ${dirs.media}/torrent/movies 0770 ${torrentGroup} root -"
+    "d ${dirs.media}/torrent/music 0770 ${torrentGroup} root -"
+    "d ${dirs.media}/torrent/shows 0770 ${torrentGroup} root -"
+    "d ${dirs.media}/usenet 0770 ${usenetGroup} root -"
+    "d ${dirs.media}/usenet/incomplete 0770 ${usenetGroup} root -"
+    "d ${dirs.media}/usenet/complete 0770 ${usenetGroup} root -"
+    "d ${dirs.media}/usenet/complete/books 0770 ${usenetGroup} root -"
+    "d ${dirs.media}/usenet/complete/movies 0770 ${usenetGroup} root -"
+    "d ${dirs.media}/usenet/complete/music 0770 ${usenetGroup} root -"
+    "d ${dirs.media}/usenet/complete/shows 0770 ${usenetGroup} root -"
   ];
 }

@@ -3,20 +3,64 @@
   config,
   ...
 }: {
-  sops.secrets.vpn_key.sopsFile = inputs.secrets.ceres;
-  networking.wg-quick.interfaces = {
-    wg0 = {
+  sops.secrets.vpn_key = {
+    sopsFile = inputs.secrets.ceres;
+    mode = "640";
+    owner = config.users.users.systemd-network.name;
+    group = config.users.users.systemd-network.name;
+  };
+  networking.firewall = {
+    allowedUDPPorts = [51820];
+    checkReversePath = "loose";
+  };
+  networking.useNetworkd = true;
+  systemd.network = {
+    enable = true;
+    networks."50-wg0" = {
+      matchConfig.Name = "wg0";
       address = ["10.2.0.2/32"];
+
+      # Use proxied DNS
+      domains = ["~."];
       dns = ["10.2.0.1"];
-      privateKeyFile = config.sops.secrets.vpn_key.path;
-      peers = [
+      networkConfig.DNSDefaultRoute = true;
+
+      # Route qbittorrent traffic over
+      routingPolicyRules = [
         {
-          publicKey = "y3Uso8csxwTGEyLSK0x+MpHifGf4onZXrV6pXL7BYAs=";
-          allowedIPs = [
+          Table = 1000;
+          User = config.services.qbittorrent.user;
+          Priority = 30001;
+          Family = "both";
+        }
+        {
+          Table = "main";
+          User = config.services.qbittorrent.user;
+          SuppressPrefixLength = 0;
+          Priority = 30000;
+          Family = "both";
+        }
+      ];
+    };
+    netdevs."50-wg0" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg0";
+      };
+      wireguardConfig = {
+        ListenPort = 51820;
+        PrivateKeyFile = config.sops.secrets.vpn_key.path;
+        FirewallMark = 42;
+      };
+      wireguardPeers = [
+        {
+          PublicKey = "y3Uso8csxwTGEyLSK0x+MpHifGf4onZXrV6pXL7BYAs=";
+          AllowedIPs = [
             "::/0"
             "0.0.0.0/0"
           ];
-          endpoint = "79.127.187.246:51820";
+          Endpoint = ["79.127.187.246:51820"];
+          RouteTable = 1000;
         }
       ];
     };
