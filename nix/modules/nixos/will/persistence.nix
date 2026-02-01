@@ -20,7 +20,9 @@ in {
       };
       ${cfg.dir}.users.${username} = {
         files = lib.optional config.programs.bash.enable ".bash_history";
-        directories = lib.optional config.programs.uwsm.enable ".config/uwsm";
+        directories =
+          lib.optional config.programs.uwsm.enable ".config/uwsm"
+          ++ lib.optional (config.services.pipewire.enable && config.services.pipewire.pulse.enable) ".config/pulse";
       };
     }
     (lib.mkIf hasHM

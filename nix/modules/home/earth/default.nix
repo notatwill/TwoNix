@@ -5,6 +5,7 @@ _: {
     ../required
     ../waybar
     ../btop.nix
+    ../element-desktop.nix
     ../fuzzel.nix
     ../gimp.nix
     ../godot.nix
