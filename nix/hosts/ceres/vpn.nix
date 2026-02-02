@@ -50,7 +50,7 @@
       wireguardConfig = {
         ListenPort = 51820;
         PrivateKeyFile = config.sops.secrets.vpn_key.path;
-        FirewallMark = 42;
+        RouteTable = 1000;
       };
       wireguardPeers = [
         {
@@ -60,7 +60,6 @@
             "0.0.0.0/0"
           ];
           Endpoint = ["79.127.187.246:51820"];
-          RouteTable = 1000;
         }
       ];
     };
