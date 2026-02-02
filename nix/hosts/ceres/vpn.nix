@@ -28,9 +28,10 @@
       # Route qbittorrent traffic
       routingPolicyRules = [
         {
-          To = "192.168.1.0/24";
           User = config.services.qbittorrent.user;
+          SuppressPrefixLength = 0;
           Priority = 1;
+          Family = "both";
         }
         {
           Table = 1000;
