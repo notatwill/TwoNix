@@ -33,6 +33,13 @@
           Priority = 100;
           Family = "both";
         }
+        {
+          User = config.services.qbittorrent.user;
+          Priority = 200;
+          Family = "both";
+          Destination = "192.168.1.0/24";
+          Exclude = "192.168.1.1/32";
+        }
       ];
     };
     netdevs."50-wg0" = {
