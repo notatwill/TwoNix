@@ -30,21 +30,15 @@
       # Route qbittorrent traffic
       routingPolicyRules = [
         {
-          To = "192.168.1.1/0";
           User = config.services.qbittorrent.user;
-          Priority = 198;
-          Family = "both";
-        }
-        {
-          To = "192.168.1.0/24";
-          User = config.services.qbittorrent.user;
-          Priority = 199;
+          SuppressPrefixLength = 0;
+          Priority = 30000;
           Family = "both";
         }
         {
           Table = 1000;
           User = config.services.qbittorrent.user;
-          Priority = 200;
+          Priority = 30001;
           Family = "both";
         }
       ];
