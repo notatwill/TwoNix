@@ -92,6 +92,7 @@ in {
   };
   networking.firewall.allowedTCPPorts = [80];
   systemd.tmpfiles.rules = [
+    "d ${dirs.apps}/jellyfin 0700 ${config.services.jellyfin.group} ${config.services.jellyfin.user} -"
     "d ${dirs.media}/live 0770 ${serveGroup} root -"
     "d ${dirs.media}/live/books 0770 ${serveGroup} root -"
     "d ${dirs.media}/live/movies 0770 ${serveGroup} root -"
