@@ -33,12 +33,6 @@
           Priority = 100;
           Family = "both";
         }
-        {
-          User = config.services.qbittorrent.user;
-          Priority = 200;
-          Family = "both";
-          Action = "reject";
-        }
       ];
     };
     netdevs."50-wg0" = {
