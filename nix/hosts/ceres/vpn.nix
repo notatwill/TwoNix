@@ -29,12 +29,13 @@
       routingPolicyRules = [
         {
           To = "192.168.1.0/24";
-          Priority = 30000;
+          User = config.services.qbittorrent.user;
+          Priority = 1;
         }
         {
           Table = 1000;
           User = config.services.qbittorrent.user;
-          Priority = 30001;
+          Priority = 2;
           Family = "both";
         }
       ];
@@ -48,6 +49,7 @@
         ListenPort = 51820;
         PrivateKeyFile = config.sops.secrets.vpn_key.path;
         RouteTable = 1000;
+        FirewallMark = 40;
       };
       wireguardPeers = [
         {
