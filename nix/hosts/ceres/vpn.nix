@@ -33,7 +33,7 @@
           To = "192.168.1.1/0";
           User = config.services.qbittorrent.user;
           Priority = 198;
-          Family = "Both";
+          Family = "both";
         }
         {
           To = "192.168.1.0/24";
