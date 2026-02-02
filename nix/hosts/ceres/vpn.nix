@@ -10,16 +10,12 @@
     group = config.users.users.systemd-network.name;
   };
   networking = {
-    nftables = {
-      enable = true;
-      
-    }
-  firewall = {
-    allowedUDPPorts = [51820];
-    checkReversePath = "loose";
+    useNetworkd = true;
+    firewall = {
+      allowedUDPPorts = [51820];
+      checkReversePath = "loose";
+    };
   };
-  };
-  networking.useNetworkd = true;
   systemd.network = {
     enable = true;
     networks."50-wg0" = {
