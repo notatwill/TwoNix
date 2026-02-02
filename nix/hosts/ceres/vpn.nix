@@ -9,9 +9,15 @@
     owner = config.users.users.systemd-network.name;
     group = config.users.users.systemd-network.name;
   };
-  networking.firewall = {
+  networking = {
+    nftables = {
+      enable = true;
+      
+    }
+  firewall = {
     allowedUDPPorts = [51820];
     checkReversePath = "loose";
+  };
   };
   networking.useNetworkd = true;
   systemd.network = {
@@ -28,17 +34,22 @@
       # Route qbittorrent traffic
       routingPolicyRules = [
         {
-          Table = 1000;
+          To = "192.168.1.1/0";
           User = config.services.qbittorrent.user;
-          Priority = 100;
+          Priority = 198;
+          Family = "Both";
+        }
+        {
+          To = "192.168.1.0/24";
+          User = config.services.qbittorrent.user;
+          Priority = 199;
           Family = "both";
         }
         {
+          Table = 1000;
           User = config.services.qbittorrent.user;
           Priority = 200;
           Family = "both";
-          Destination = "192.168.1.0/24";
-          Exclude = "192.168.1.1/32";
         }
       ];
     };
