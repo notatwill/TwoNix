@@ -25,19 +25,16 @@
       dns = ["10.2.0.1"];
       networkConfig.DNSDefaultRoute = true;
 
-      # Route qbittorrent traffic over
+      # Route qbittorrent traffic
       routingPolicyRules = [
+        {
+          To = "192.168.1.0/24";
+          Priority = 30000;
+        }
         {
           Table = 1000;
           User = config.services.qbittorrent.user;
           Priority = 30001;
-          Family = "both";
-        }
-        {
-          Table = "main";
-          User = config.services.qbittorrent.user;
-          SuppressPrefixLength = 0;
-          Priority = 30000;
           Family = "both";
         }
       ];
