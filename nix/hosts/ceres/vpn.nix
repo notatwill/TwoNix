@@ -29,16 +29,16 @@
 
       # Route qbittorrent traffic
       routingPolicyRules = [
-        # {
-        #   User = config.services.qbittorrent.user;
-        #   SuppressPrefixLength = 0;
-        #   Priority = 30000;
-        #   Family = "both";
-        # }
+        {
+          User = config.services.qbittorrent.user;
+          SuppressPrefixLength = 0;
+          Priority = 30000;
+          Family = "both";
+        }
         {
           Table = 1000;
           User = config.services.qbittorrent.user;
-          Priority = 30000;
+          Priority = 30001;
           Family = "both";
         }
       ];
