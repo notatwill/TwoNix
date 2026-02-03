@@ -96,7 +96,7 @@ in {
     recommendedProxySettings = true;
     recommendedBrotliSettings = true;
     virtualHosts = {
-      "ceres.lan".locations."/".proxyPass = "http://127.0.0.1:8096";
+      "media.ceres.lan".locations."/".proxyPass = "http://127.0.0.1:8096";
     };
   };
   systemd.tmpfiles.rules = [
