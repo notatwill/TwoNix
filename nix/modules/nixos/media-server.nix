@@ -86,7 +86,6 @@ in {
     };
     qbittorrent = {
       enable = true;
-      openFirewall = true;
       profileDir = dirs.apps;
     };
   };
@@ -96,7 +95,7 @@ in {
     recommendedProxySettings = true;
     recommendedBrotliSettings = true;
     virtualHosts = {
-      "media.ceres.lan".locations."/".proxyPass = "http://127.0.0.1:8096";
+      "ceres.lan".locations."/".proxyPass = "http://127.0.0.1:8080";
     };
   };
   systemd.tmpfiles.rules = [

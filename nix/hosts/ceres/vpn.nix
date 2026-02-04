@@ -21,24 +21,16 @@
     networks."50-wg0" = {
       matchConfig.Name = "wg0";
       address = ["10.2.0.2/32"];
-
       # Use proxied DNS
       domains = ["~."];
       dns = ["10.2.0.1"];
       networkConfig.DNSDefaultRoute = true;
-
       # Route qbittorrent traffic
       routingPolicyRules = [
         {
-          User = config.services.qbittorrent.user;
-          SuppressPrefixLength = 0;
-          Priority = 30000;
-          Family = "both";
-        }
-        {
           Table = 1000;
           User = config.services.qbittorrent.user;
-          Priority = 30001;
+          Priority = 30000;
           Family = "both";
         }
       ];
