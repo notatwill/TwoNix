@@ -30,7 +30,7 @@
         {
           Table = 1000;
           User = config.services.qbittorrent.user;
-          Priority = 30000;
+          Priority = 50;
           Family = "both";
         }
       ];
