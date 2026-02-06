@@ -3,6 +3,7 @@
     flake.nixosModules.server
     ./disko.nix
     ./hardware.nix
+    ./secrets.nix
     ./users.nix
     ./vpn.nix
   ];

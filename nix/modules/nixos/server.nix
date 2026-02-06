@@ -2,6 +2,7 @@ _: {
   imports = [
     ./required
     ./auto-upgrade.nix
+    ./ddns.nix
     ./fail2ban.nix
     ./gc-store.nix
     ./media-server.nix
