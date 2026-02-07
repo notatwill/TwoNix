@@ -29,7 +29,7 @@
     networks = {
       "50-wg1" = {
         matchConfig.Name = "wg1";
-        address = ["10.1.0.0/24"];
+        address = ["10.1.0.1/32"];
       };
       "60-wg0" = {
         matchConfig.Name = "wg0";
@@ -58,7 +58,7 @@
         wireguardConfig = {
           ListenPort = 51820;
           PrivateKeyFile = config.sops.secrets.personal_vpn_key.path;
-          RouteTable = 1000;
+          RouteTable = "main";
           FirewallMark = 50;
         };
         wireguardPeers = [
