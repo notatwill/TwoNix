@@ -61,6 +61,14 @@
           RouteTable = 1000;
           FirewallMark = 50;
         };
+        wireguardPeers = [
+          {
+            PublicKey = "utvNVeVF/P1+Fhwba1DiWFTGehfbI96HKgV/ts4Hxtk=";
+            AllowedIPs = [
+              "10.1.0.0/24"
+            ];
+          }
+        ];
       };
       "60-wg0" = {
         netdevConfig = {
