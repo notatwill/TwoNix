@@ -29,7 +29,7 @@
     networks = {
       "50-wg1" = {
         matchConfig.Name = "wg1";
-        address = ["10.1.0.1/32"];
+        address = ["10.1.0.0/24"];
       };
       "60-wg0" = {
         matchConfig.Name = "wg0";
