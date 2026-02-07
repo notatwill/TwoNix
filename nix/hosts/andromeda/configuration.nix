@@ -4,6 +4,7 @@
     ./disko.nix
     ./hardware.nix
     ./users.nix
+    ./vpn.nix
   ];
   time.timeZone = "America/Chicago";
   networking.hostName = "andromeda";
