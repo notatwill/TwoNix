@@ -3,7 +3,6 @@
 
   # Add all your dependencies here
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable-small";
     blueprint.url = "github:numtide/blueprint";
     blueprint.inputs.nixpkgs.follows = "nixpkgs";
     blueprint.inputs.systems.follows = "systems";
@@ -14,6 +13,9 @@
     impermanence.url = "github:nix-community/impermanence";
     impermanence.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.inputs.home-manager.follows = "home-manager";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable-small";
+    nixarr.url = "github:nix-media-server/nixarr";
+    nixarr.inputs.nixpkgs.follows = "nixpkgs";
     secrets.url = "git+ssh://git@github.com/hybrideology/sops-secrets.git";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";

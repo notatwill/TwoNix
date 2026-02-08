@@ -1,19 +1,25 @@
-{config, ...}: let
+{
+  config,
+  inputs,
+  ...
+}: let
   dirs = config.vars.dataDirs;
   torrentGroup = "torrent";
   usenetGroup = "usenet";
   serveGroup = "serve";
 in {
+  imports = [inputs.nixarr.nixosModules.default];
+  nixarr = {
+    enable = true;
+    transmission = {
+      enable = true;
+      vpn.enable = true;
+    };
+  };
   users.groups.${torrentGroup}.gid = 101;
   users.groups.${usenetGroup}.gid = 102;
   users.groups.${serveGroup}.gid = 103;
   users.users.${config.services.jellyfin.user}.extraGroups = [serveGroup];
-  users.users.${config.services.lidarr.user}.extraGroups = [torrentGroup usenetGroup serveGroup];
-  users.users.${config.services.radarr.user}.extraGroups = [torrentGroup usenetGroup serveGroup];
-  users.users.${config.services.sonarr.user}.extraGroups = [torrentGroup usenetGroup serveGroup];
-  users.users.${config.services.readarr.user}.extraGroups = [torrentGroup usenetGroup serveGroup];
-  users.users.${config.services.bazarr.user}.extraGroups = [serveGroup];
-  users.users.${config.services.qbittorrent.user}.extraGroups = [torrentGroup];
   services = {
     jellyfin = {
       enable = true;
@@ -22,65 +28,6 @@ in {
       cacheDir = "${dirs.apps}/jellyfin/cache";
       logDir = "${dirs.apps}/jellyfin/log";
       configDir = "${dirs.apps}/jellyfin/config";
-    };
-    lidarr = {
-      enable = true;
-      openFirewall = true;
-      dataDir = "${dirs.apps}/lidarr";
-    };
-    radarr = {
-      enable = true;
-      openFirewall = true;
-      dataDir = "${dirs.apps}/radarr";
-    };
-    sonarr = {
-      enable = true;
-      openFirewall = true;
-      dataDir = "${dirs.apps}/sonarr";
-    };
-    readarr = {
-      enable = true;
-      openFirewall = true;
-      dataDir = "${dirs.apps}/readarr";
-    };
-    bazarr = {
-      enable = true;
-      openFirewall = true;
-      dataDir = "${dirs.apps}/bazarr";
-    };
-    prowlarr = {
-      enable = true;
-      openFirewall = true;
-      dataDir = "${dirs.apps}/prowlarr";
-    };
-    # recyclarr = {
-    #   enable = true;
-    #   group = group;
-    #   user = user;
-    #   configuration = {
-    #     radarr = [
-    #       {
-    #         api_key = {
-    #           _secret = "/run/credentials/recyclarr.service/radarr-api_key";
-    #         };
-    #         base_url = "http://localhost:7878";
-    #         instance_name = "main";
-    #       }
-    #     ];
-    #     sonarr = [
-    #       {
-    #         api_key = {
-    #           _secret = "/run/credentials/recyclarr.service/sonarr-api_key";
-    #         };
-    #         base_url = "http://localhost:8989";
-    #         instance_name = "main";
-    #       }
-    #     ];
-    #   };
-    # };
-    qbittorrent = {
-      enable = true;
-      profileDir = dirs.apps;
     };
   };
   networking.firewall.allowedTCPPorts = [80];
