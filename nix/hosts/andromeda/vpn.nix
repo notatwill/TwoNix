@@ -15,7 +15,7 @@
     networks = {
       "50-wg0" = {
         matchConfig.Name = "wg0";
-        address = ["10.0.0.2/32" "FC00::2/128"];
+        address = ["10.0.0.2/32"];
       };
     };
     netdevs = {
