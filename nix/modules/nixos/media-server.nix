@@ -36,7 +36,7 @@ in {
     recommendedProxySettings = true;
     recommendedBrotliSettings = true;
     virtualHosts = {
-      "ceres.lan".locations."/".proxyPass = "http://127.0.0.1:8080";
+      "ceres.lan".locations."/".proxyPass = "http://127.0.0.1:${toString config.nixarr.transmission.uiPort}";
     };
   };
   systemd.tmpfiles.rules = [
