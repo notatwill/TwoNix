@@ -2,6 +2,7 @@
   imports = [
     flake.nixosModules.server
     ./disko.nix
+    ./dns-server.nix
     ./hardware.nix
     ./secrets.nix
     ./users.nix

@@ -26,7 +26,7 @@
     networks = {
       "50-wg0" = {
         matchConfig.Name = "wg0";
-        address = ["10.0.0.1/32"];
+        address = ["10.0.0.1/24"];
       };
     };
     netdevs = {
@@ -45,14 +45,14 @@
           {
             PublicKey = "7ZLGJ8bowq9sDPkNYBXFfQKEoVbFdMAkqW7xQqYwJXM=";
             AllowedIPs = [
-              "10.0.0.0/24"
+              "10.0.0.2/32"
             ];
           }
           # sam desktop
           {
             PublicKey = "Bu8uY1wrJVfWEOf7kGuyBYfVA5d1H91FZmEF8gvlCxY=";
             AllowedIPs = [
-              "10.0.0.0/24"
+              "10.0.0.3/32"
             ];
           }
         ];
