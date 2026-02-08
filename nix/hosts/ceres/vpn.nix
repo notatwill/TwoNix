@@ -45,14 +45,14 @@
           {
             PublicKey = "7ZLGJ8bowq9sDPkNYBXFfQKEoVbFdMAkqW7xQqYwJXM=";
             AllowedIPs = [
-              "10.0.0.2/32"
+              "10.0.0.0/24"
             ];
           }
           # sam desktop
           {
             PublicKey = "Bu8uY1wrJVfWEOf7kGuyBYfVA5d1H91FZmEF8gvlCxY=";
             AllowedIPs = [
-              "10.0.0.3/32"
+              "10.0.0.0/24"
             ];
           }
         ];

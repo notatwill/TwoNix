@@ -33,7 +33,6 @@
             PublicKey = "QWwLEg0SjMm0ZNyb8iPa9V/29/VnHLKt9ZpVUaiE7j0=";
             AllowedIPs = [
               "10.0.0.0/24"
-              "FC00::/64"
             ];
             Endpoint = "465241395.xyz:51820";
           }
