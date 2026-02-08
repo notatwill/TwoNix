@@ -13,7 +13,7 @@ in {
     enable = true;
     transmission = {
       enable = true;
-      # vpn.enable = true;
+      vpn.enable = true;
     };
   };
   users.groups.${torrentGroup}.gid = 101;

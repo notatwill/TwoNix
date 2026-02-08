@@ -17,13 +17,13 @@
       format = "binary";
     };
   };
-  # nixarr = {
-  #   transmission.peerPort = 15758;
-  #   vpn = {
-  #     enable = true;
-  #     wgConf = config.sops.secrets.vpn_proxy_conf.path;
-  #   };
-  # };
+  nixarr = {
+    transmission.peerPort = 15758;
+    vpn = {
+      enable = true;
+      wgConf = config.sops.secrets.vpn_proxy_conf.path;
+    };
+  };
   networking = {
     useNetworkd = true;
     firewall.allowedUDPPorts = [51820];
