@@ -5,6 +5,7 @@ _: {
     ./ddns.nix
     ./fail2ban.nix
     ./gc-store.nix
+    ./i2pd.nix
     ./media-server.nix
     ./nix.nix
     ./nixpkgs.nix

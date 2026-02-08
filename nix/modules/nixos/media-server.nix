@@ -78,12 +78,6 @@ in {
     #     ];
     #   };
     # };
-    i2pd = {
-      enable = true;
-      enableIPv6 = true;
-      yggdrasil.enable = true;
-      proto.sam.enable = true;
-    };
     qbittorrent = {
       enable = true;
       profileDir = dirs.apps;
