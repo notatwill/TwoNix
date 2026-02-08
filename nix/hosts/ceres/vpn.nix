@@ -31,16 +31,16 @@
   systemd.network = {
     enable = true;
     networks = {
-      "50-wg0" = {
-        matchConfig.Name = "wg0";
+      "60-wg0" = {
+        matchConfig.Name = "wg1";
         address = ["10.0.0.1/24"];
       };
     };
     netdevs = {
-      "50-wg0" = {
+      "60-wg1" = {
         netdevConfig = {
           Kind = "wireguard";
-          Name = "wg0";
+          Name = "wg1";
         };
         wireguardConfig = {
           ListenPort = 51820;
