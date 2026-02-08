@@ -15,7 +15,7 @@
     networks = {
       "50-wg0" = {
         matchConfig.Name = "wg0";
-        address = ["10.0.0.2/32"];
+        address = ["10.0.0.2/32" "FC00::2/128"];
       };
     };
     netdevs = {
@@ -33,6 +33,7 @@
             PublicKey = "QWwLEg0SjMm0ZNyb8iPa9V/29/VnHLKt9ZpVUaiE7j0=";
             AllowedIPs = [
               "10.0.0.0/24"
+              "FC00::/64"
             ];
             Endpoint = "465241395.xyz:51820";
           }
