@@ -15,6 +15,5 @@ _: {
     ./snowflake.nix
     ./systemd-boot.nix
     ./wireless.nix
-    ./tailscale.nix
   ];
 }
