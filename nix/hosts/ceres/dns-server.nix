@@ -1,8 +1,8 @@
 _: {
-  networking.firewall = {
-    allowedUDPPorts = [53];
-    allowedTCPPorts = [53];
-  };
+  # networking.firewall = {
+  #   allowedUDPPorts = [53];
+  #   allowedTCPPorts = [53];
+  # };
   # Keep resolved for local resolution, but disable its DNS server
   services.resolved.settings.Resolve = {
     DNSStubListener = "yes";
