@@ -3,9 +3,9 @@
     allowedUDPPorts = [53];
     allowedTCPPorts = [53];
   };
-  services = {
-    dnsmasq.enable = true; # serves from /etc/hosts
-    resolved.enable = false; # enabled by systemd networking
+  services.resolved.settings.Resolve = {
+    DNSStubListener = "yes";
+    DNSStubListenerExtra = "0.0.0.0:53";
   };
   environment.persistence.${config.vars.persistence.dir}.directories = ["/var/lib/dnsmasq"];
 }
