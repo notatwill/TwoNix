@@ -13,7 +13,6 @@
     vpn_proxy_conf = {
       sopsFile = inputs.secrets.ceres-vpn-proxy;
       mode = "440";
-      group = config.util-nixarr.globals.libraryOwner.group;
       format = "binary";
     };
   };
