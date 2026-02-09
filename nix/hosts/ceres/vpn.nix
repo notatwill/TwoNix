@@ -24,6 +24,7 @@
     };
   };
   networking = {
+    hosts."10.0.0.1" = ["ceres"];
     useNetworkd = true;
     firewall.allowedUDPPorts = [51820];
   };
