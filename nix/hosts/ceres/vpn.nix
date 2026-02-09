@@ -62,6 +62,13 @@
               "10.0.0.3/32"
             ];
           }
+          # graphene
+          {
+            PublicKey = "g3k/Jr9xGBA5/biBHfpuibWcnksyoYYtVdY/MamXcB4=";
+            AllowedIPs = [
+              "10.0.0.4/32"
+            ];
+          }
         ];
       };
     };
