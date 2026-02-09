@@ -17,7 +17,6 @@
         matchConfig.Name = "wg0";
         address = ["10.0.0.2/24"];
         dns = ["10.0.0.1"];
-        domains = ["ceres"];
       };
     };
     netdevs = {
