@@ -24,7 +24,7 @@
     };
   };
   networking = {
-    hosts."10.0.0.1" = ["ceres"];
+    hosts."10.0.0.1" = ["ceres.vpn"];
     useNetworkd = true;
     firewall.allowedUDPPorts = [51820];
   };

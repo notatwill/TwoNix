@@ -9,10 +9,6 @@ _: {
       interface = "wg1";
       bind-interfaces = true;
       listen-address = "10.0.0.1";
-      # Add your hosts entries
-      address = [
-        "/ceres/10.0.0.1"
-      ];
     };
   };
   # Keep resolved for local resolution, but disable its DNS server
