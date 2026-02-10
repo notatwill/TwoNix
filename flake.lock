@@ -306,11 +306,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1770605059,
-        "narHash": "sha256-S93uz/Ue5JOvvtHYnIVyVor36E6Es5yyJ3t+VmGpGPM=",
+        "lastModified": 1770952260,
+        "narHash": "sha256-R0Tzv89Kpr/SefuKOd/H9Jgsaq1HTg8bjpsPu+1EDTE=",
         "ref": "refs/heads/main",
-        "rev": "cae8e45fa8689dd07446f6750958becc28f5616e",
-        "revCount": 24,
+        "rev": "51242a947e564fc885f75e64748d3d845d3d2e9b",
+        "revCount": 25,
         "type": "git",
         "url": "ssh://git@github.com/hybrideology/sops-secrets.git"
       },

@@ -2,17 +2,35 @@
   inputs,
   config,
   ...
-}: {
+}: let
+  fqdn = config.vars.fqdn;
+in {
   sops.secrets.personal_vpn_key = {
     sopsFile = inputs.secrets.ceres;
     mode = "440";
     owner = config.users.users.systemd-network.name;
     group = config.users.users.systemd-network.group;
   };
+  services = {
+    dnsmasq = {
+      enable = true;
+      resolveLocalQueries = false;
+      settings = {
+        bind-interfaces = true;
+        listen-address = "10.0.0.1";
+        address = [
+          "/${fqdn}/10.0.0.1"
+          "/*.${fqdn}/10.0.0.1"
+        ];
+      };
+    };
+  };
   networking = {
-    hosts."10.0.0.1" = ["ceres.vpn"];
     useNetworkd = true;
-    firewall.allowedUDPPorts = [51820];
+    firewall = {
+      allowedUDPPorts = [53 51820];
+      allowedTCPPorts = [53];
+    };
   };
   systemd.network = {
     enable = true;

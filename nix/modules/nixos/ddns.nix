@@ -1,7 +1,9 @@
-{config, ...}: {
+{...}: {
   services.ddns-updater = {
     enable = true;
-    environment.SERVER_ENABLED = "no";
+    environment = {
+      SERVER_ENABLED = "no";
+      PERIOD = "1m";
+    };
   };
-  environment.persistence.${config.vars.persistence.dir}.directories = ["/var/lib/private/ddns-updater/"];
 }

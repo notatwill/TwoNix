@@ -15,6 +15,10 @@ in {
             "/var/lib/systemd"
             "/var/lib/nixos"
             "/var/log"
+            {
+              directory = "/var/lib/private";
+              mode = "700";
+            }
           ]
           ++ lib.optional config.networking.dhcpcd.enable "/var/lib/dhcpcd"
           ++ lib.optional config.security.sudo.enable "/var/db/sudo";

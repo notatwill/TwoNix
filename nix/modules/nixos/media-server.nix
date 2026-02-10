@@ -4,60 +4,59 @@
   ...
 }: let
   dirs = config.vars.dataDirs;
-  torrentGroup = "torrent";
-  usenetGroup = "usenet";
-  serveGroup = "serve";
+  fqdn = config.vars.fqdn;
 in {
+  assertions = [
+    {
+      assertion = fqdn != "";
+      message = "The FQDN needs to be assigned in order to enable the media server.";
+    }
+  ];
   imports = [inputs.nixarr.nixosModules.default];
   nixarr = {
     enable = true;
+    stateDir = dirs.apps;
+    mediaDir = dirs.media;
+    audiobookshelf = {
+      enable = true; # serve audiobooks, podcasts
+      openFirewall = false;
+    };
+    autobrr = {
+      enable = true; # auto download manager
+      openFirewall = false;
+    };
+    bazarr = {
+      enable = true; # subtitles
+      openFirewall = false;
+    };
+    jellyfin = {
+      enable = true; # serve movies, shows, music
+      openFirewall = false;
+    };
+    jellyseerr = {
+      enable = true; # requests
+      openFirewall = false;
+    };
+    komga = {
+      enable = true; # comics, ebooks
+      openFirewall = false;
+    };
     transmission = {
-      enable = true;
+      enable = true; # torrent client
       vpn.enable = true;
     };
   };
-  users.groups.${torrentGroup}.gid = 101;
-  users.groups.${usenetGroup}.gid = 102;
-  users.groups.${serveGroup}.gid = 103;
-  users.users.${config.services.jellyfin.user}.extraGroups = [serveGroup];
-  services = {
-    jellyfin = {
-      enable = true;
-      openFirewall = true;
-      dataDir = "${dirs.media}/jellyfin";
-      cacheDir = "${dirs.apps}/jellyfin/cache";
-      logDir = "${dirs.apps}/jellyfin/log";
-      configDir = "${dirs.apps}/jellyfin/config";
-    };
-  };
-  networking.firewall.allowedTCPPorts = [80];
+  networking.firewall.allowedTCPPorts = [80 443];
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
     recommendedBrotliSettings = true;
     virtualHosts = {
-      "ceres.lan".locations."/".proxyPass = "http://127.0.0.1:${toString config.nixarr.transmission.uiPort}";
+      "audiobookshelf.${fqdn}".locations."/".proxyPass = "http://127.0.0.1:${toString config.nixarr.audiobookshelf.port}";
+      "aurobrr.${fqdn}".locations."/".proxyPass = "http://127.0.0.1:${toString config.nixarr.autobrr.settings.port}";
+      "jellyfin.${fqdn}".locations."/".proxyPass = "http://127.0.0.1:8096"; # jellyfin port
+      "jellyseerr.${fqdn}".locations."/".proxyPass = "http://127.0.0.1:5055"; # jellyseerr port
+      "transmission.${fqdn}".locations."/".proxyPass = "http://127.0.0.1:${toString config.nixarr.transmission.uiPort}";
     };
   };
-  systemd.tmpfiles.rules = [
-    "d ${dirs.apps}/jellyfin 0700 ${config.services.jellyfin.group} ${config.services.jellyfin.user} -"
-    "d ${dirs.media}/live 0770 root ${serveGroup} -"
-    "d ${dirs.media}/live/books 0770 root ${serveGroup} -"
-    "d ${dirs.media}/live/movies 0770 root ${serveGroup} -"
-    "d ${dirs.media}/live/music 0770 root ${serveGroup} -"
-    "d ${dirs.media}/live/photosvideos 0770 root ${serveGroup} -"
-    "d ${dirs.media}/live/shows 0770 root ${serveGroup} -"
-    "d ${dirs.media}/torrent 0770 root ${torrentGroup} -"
-    "d ${dirs.media}/torrent/books 0770 root ${torrentGroup} -"
-    "d ${dirs.media}/torrent/movies 0770 root ${torrentGroup} -"
-    "d ${dirs.media}/torrent/music 0770 root ${torrentGroup} -"
-    "d ${dirs.media}/torrent/shows 0770 root ${torrentGroup} -"
-    "d ${dirs.media}/usenet 0770 root ${usenetGroup} -"
-    "d ${dirs.media}/usenet/incomplete 0770 root ${usenetGroup} -"
-    "d ${dirs.media}/usenet/complete 0770 root ${usenetGroup} -"
-    "d ${dirs.media}/usenet/complete/books 0770 root ${usenetGroup} -"
-    "d ${dirs.media}/usenet/complete/movies 0770 root ${usenetGroup} -"
-    "d ${dirs.media}/usenet/complete/music 0770 root ${usenetGroup} -"
-    "d ${dirs.media}/usenet/complete/shows 0770 root ${usenetGroup} -"
-  ];
 }

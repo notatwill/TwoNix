@@ -1,5 +1,9 @@
 {lib, ...}: {
   options.vars = {
+    fqdn = lib.mkOption {
+      default = "";
+      type = lib.types.str;
+    };
     persistence = {
       enable = lib.mkEnableOption "impermanence";
       dir = lib.mkOption {
