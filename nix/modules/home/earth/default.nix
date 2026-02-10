@@ -20,7 +20,6 @@ _: {
     ../mpv.nix
     ../nh.nix
     ../nixos-anywhere.nix
-    ../qbittorrent.nix
     ../rnote.nix
     ../satty.nix
     ../ssh.nix
@@ -28,6 +27,7 @@ _: {
     ../tor-browser.nix
     ../unar.nix
     ../vesktop.nix
+    ../wl-clip-persist.nix
     ../yazi.nix
     ../zsh.nix
   ];

@@ -3,25 +3,11 @@
   config,
   ...
 }: {
-  sops.secrets = {
-    personal_vpn_key = {
-      sopsFile = inputs.secrets.ceres;
-      mode = "440";
-      owner = config.users.users.systemd-network.name;
-      group = config.users.users.systemd-network.group;
-    };
-    vpn_proxy_conf = {
-      sopsFile = inputs.secrets.ceres-vpn-proxy;
-      mode = "440";
-      format = "binary";
-    };
-  };
-  nixarr = {
-    transmission.peerPort = 15758;
-    vpn = {
-      enable = true;
-      wgConf = config.sops.secrets.vpn_proxy_conf.path;
-    };
+  sops.secrets.personal_vpn_key = {
+    sopsFile = inputs.secrets.ceres;
+    mode = "440";
+    owner = config.users.users.systemd-network.name;
+    group = config.users.users.systemd-network.group;
   };
   networking = {
     hosts."10.0.0.1" = ["ceres.vpn"];
@@ -31,7 +17,7 @@
   systemd.network = {
     enable = true;
     networks = {
-      "60-wg0" = {
+      "60-wg1" = {
         matchConfig.Name = "wg1";
         address = ["10.0.0.1/24"];
       };
