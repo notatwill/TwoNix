@@ -1,6 +1,5 @@
 {config, ...}: let
   dirs = config.vars.dataDirs;
-  domain = "465241395.xyz";
   ports = config.services.matrix-tuwunel.settings.global.port;
 in {
   networking.firewall.allowedTCPPorts = ports;
@@ -24,7 +23,7 @@ in {
       settings = {
         homeserver = {
           domain = config.services.matrix-tuwunel.settings.global.server_name;
-          address = "https://${domain}:${toString (builtins.elemAt ports 0)}/";
+          address = "http://127.0.0.1:${toString (builtins.elemAt ports 0)}/";
         };
         bridge.permissions = {
           "*" = "relay";
