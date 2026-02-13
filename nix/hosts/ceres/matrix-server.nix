@@ -24,7 +24,7 @@ in {
       settings = {
         homeserver = {
           domain = config.services.matrix-tuwunel.settings.global.server_name;
-          address = "${domain}:${toString (builtins.elemAt ports 0)}";
+          address = "https://${domain}:${toString (builtins.elemAt ports 0)}/";
         };
         bridge.permissions = {
           "*" = "relay";
