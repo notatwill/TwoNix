@@ -3,13 +3,13 @@
   config,
   ...
 }: let
-  fqdn = config.vars.fqdn;
+  inherit (config.vars) fqdn;
 in {
   sops.secrets.personal_vpn_key = {
     sopsFile = inputs.secrets.ceres;
     mode = "440";
     owner = config.users.users.systemd-network.name;
-    group = config.users.users.systemd-network.group;
+    inherit (config.users.users.systemd-network) group;
   };
   services = {
     dnsmasq = {

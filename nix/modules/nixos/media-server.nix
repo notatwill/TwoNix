@@ -4,7 +4,7 @@
   ...
 }: let
   dirs = config.vars.dataDirs;
-  fqdn = config.vars.fqdn;
+  inherit (config.vars) fqdn;
 in {
   assertions = [
     {

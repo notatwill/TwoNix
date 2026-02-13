@@ -7,7 +7,7 @@
     sopsFile = inputs.secrets.andromeda;
     mode = "440";
     owner = config.users.users.systemd-network.name;
-    group = config.users.users.systemd-network.group;
+    inherit (config.users.users.systemd-network) group;
   };
   networking.useNetworkd = true;
   systemd.network = {

@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services.ddns-updater = {
     enable = true;
     environment = {

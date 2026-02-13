@@ -1,7 +1,7 @@
 {config, ...}: {
   sops.secrets."wpa_secrets" = {
     owner = config.users.users.wpa_supplicant.name;
-    group = config.users.users.wpa_supplicant.group;
+    inherit (config.users.users.wpa_supplicant) group;
   };
   networking.wireless = {
     enable = true;
