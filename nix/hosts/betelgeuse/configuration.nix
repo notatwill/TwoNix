@@ -1,4 +1,8 @@
-{flake, ...}: {
+{
+  flake,
+  config,
+  ...
+}: {
   imports = [
     flake.nixosModules.workstation
     ./disko.nix
@@ -10,4 +14,5 @@
   networking.hostId = "1352f34a"; # random, required by zfs
   system.stateVersion = "25.11";
   services.tailscale.enable = true;
+  environment.persistence.${config.vars.persistence.dir}.directories = ["/tmp"]; # low memory
 }
