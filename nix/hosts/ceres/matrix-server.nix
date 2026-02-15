@@ -29,6 +29,11 @@ in {
           "*" = "relay";
           "@hybrideology:matrix.org" = "admin";
         };
+        appservice = {
+          address = "http://localhost:29334";
+          hostname = "127.0.0.1";
+          port = 29334;
+        };
       };
     };
   };
