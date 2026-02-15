@@ -6,6 +6,7 @@
 }: let
   cfg = config.modules.sops;
 in {
+  imports = [inputs.sops-nix.nixosModules.sops];
   options.modules.sops = {
     dir = lib.mkOption {
       default = "/var/lib/sops";

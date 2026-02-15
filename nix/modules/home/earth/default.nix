@@ -27,6 +27,7 @@ _: {
     ../tor-browser.nix
     ../unar.nix
     ../vesktop.nix
+    ../wireguard-tools.nix
     ../wl-clip-persist.nix
     ../yazi.nix
     ../zsh.nix
