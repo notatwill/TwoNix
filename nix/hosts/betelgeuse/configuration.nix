@@ -15,4 +15,5 @@
   system.stateVersion = "25.11";
   services.tailscale.enable = true;
   environment.persistence.${config.vars.persistence.dir}.directories = ["/tmp"]; # low memory
+  boot.tmp.cleanOnBoot = true;
 }
