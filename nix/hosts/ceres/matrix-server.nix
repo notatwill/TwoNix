@@ -32,4 +32,5 @@ in {
       };
     };
   };
+  environment.persistence.${config.vars.persistence.dir}.directories = [config.services.mautrix-discord.dataDir];
 }
