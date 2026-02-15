@@ -16,10 +16,15 @@ in {
         database_backup_paths_to_keep = 2;
         ip_lookup_strategy = 4;
         encryption_enabled_by_default_for_room_type = "all";
+        appservice."mautrix-discord" = {
+          url = config.services.mautrix-discord.settings.appservice.address;
+          receive_ephemeral = true;
+        };
       };
     };
     mautrix-discord = {
       enable = true;
+      dataDir = "${dirs.apps}/mautrix-discord";
       settings = {
         homeserver = {
           domain = config.services.matrix-tuwunel.settings.global.server_name;
@@ -30,9 +35,10 @@ in {
           "@hybrideology:matrix.org" = "admin";
         };
         appservice = {
-          address = "http://localhost:29334";
+          address = "http://localhost:${config.services.mautrix-discord.settings.appservice.port}";
           hostname = "127.0.0.1";
           port = 29334;
+          ephemeral_events = true;
         };
       };
     };
