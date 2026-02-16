@@ -37,7 +37,7 @@ in {
         appservice = {
           address = "http://localhost:${config.services.mautrix-discord.settings.appservice.port}";
           hostname = "127.0.0.1";
-          port = 29334;
+          port = "29334";
           ephemeral_events = true;
         };
       };
